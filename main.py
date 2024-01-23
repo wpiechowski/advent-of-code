@@ -1,4 +1,4 @@
-from d25 import task1 as task
+from y2016.d03 import task2 as task
 
 
 task()
