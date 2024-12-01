@@ -6,7 +6,7 @@ from itertools import cycle, product
 from collections import Counter, deque
 from dataclasses import dataclass
 
-
+# dy, dx, code
 directions = (
     (0, 1, "R"),
     (0, -1, "L"),
