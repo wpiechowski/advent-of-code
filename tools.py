@@ -6,12 +6,12 @@ from itertools import cycle, product
 from collections import Counter, deque
 from dataclasses import dataclass
 
-# dy, dx, code
+# dy, dx, code_letter, code_mark
 directions = (
-    (0, 1, "R"),
-    (0, -1, "L"),
-    (1, 0, "D"),
-    (-1, 0, "U"),
+    (0, 1, "R", ">"),
+    (1, 0, "D", "v"),
+    (0, -1, "L", "<"),
+    (-1, 0, "U", "^"),
 )
 
 
