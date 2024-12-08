@@ -2,7 +2,7 @@ import inspect
 import re
 from icecream import ic
 import time
-from itertools import cycle, product
+from itertools import cycle, product, combinations, permutations
 from collections import Counter, deque
 from dataclasses import dataclass
 
