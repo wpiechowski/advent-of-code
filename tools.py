@@ -5,6 +5,8 @@ import time
 from itertools import cycle, product, combinations, permutations
 from collections import Counter, deque
 from dataclasses import dataclass
+from functools import cache
+
 
 # dy, dx, code_letter, code_mark
 directions = (
