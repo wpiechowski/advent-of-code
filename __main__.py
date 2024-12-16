@@ -1,7 +1,7 @@
 import time
 
 
-from y2024.d15 import task2 as task
+from y2024.d16 import task2 as task
 
 
 t0 = time.time()
