@@ -95,12 +95,18 @@ class Keypad:
         dx = pb[1] - pa[1]
         ty = ("v" * dy) + ("^" * -dy)
         tx = (">" * dx) + ("<" * -dx)
-        self.set_state(a)
+        if dx > 0:
+            t1 = ty + tx
+            t2 = tx + ty
+        else:
+            t1 = tx + ty
+            t2 = ty + tx
         try:
-            self.play(ty + tx)
-            return ty + tx
+            self.set_state(a)
+            self.play(t1)
+            return t1
         except ValueError:
-            return tx + ty
+            return t2
 
     def calc_moves(self):
         them = "".join(self.layout)
@@ -148,10 +154,38 @@ def task1():
     score = 0
     for moves in get_lines("i.txt"):
         m0 = moves
+        print(moves)
         for pad in reversed(pads):
             moves = find_moves(moves, pad)
             print(moves)
         score += len(moves) * int(m0[:-1])
         r = replay(pads, moves)
         print(m0, r)
+    print(score)
+
+
+@cache
+def count_moves(pad: Keypad, moves: str, iters: 25) -> int:
+    if iters == 0:
+        return len(moves)
+    count = 0
+    state = "A"
+    for m in moves:
+        mm = pad.moves[state + m] + "A"
+        state = m
+        count += count_moves(pad, mm, iters - 1)
+    return count
+
+
+def task2():
+    numpad = Keypad(layout_numpad)
+    cursor = Keypad(layout_cursor)
+    score = 0
+    for moves in get_lines("i.txt"):
+        m0 = moves
+        print(moves)
+        moves = find_moves(moves, numpad)
+        cnt = count_moves(cursor, moves, 25)
+        print(cnt)
+        score += cnt * int(m0[:-1])
     print(score)
