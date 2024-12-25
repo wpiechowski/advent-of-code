@@ -147,7 +147,7 @@ def rename_chain(nodes, gates, bit: int, max_bit: int):
 
 
 def task2():
-    nodes, gates, n_z = load("ii.txt")
+    nodes, gates, n_z = load("i.txt")
     ret = 0
     print(n_z)
     for bit in range(n_z):
